@@ -3,7 +3,7 @@ in mind the principles we have learned from our course "Object
 Oriented Programming" (CS F213).
 
 All UML diagrams are in uml/.
-All code is in src/ (JUnit Tests are in src/tests).
+All code is in src/ (tests are in src/tests).
 The SQL Queries of the databases created can be found in database/MessManagement.sql file
 
 To compile all source files in one go run the exec.sh in src/ directory
