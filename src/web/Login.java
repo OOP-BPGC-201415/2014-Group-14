@@ -49,6 +49,9 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.setContentType("application/json");
+		response.getOutputStream().write("{'var1': {'var12': 'val12'}, 'var2': 'val2'}".getBytes());
+		if(true) return;
 		try {
 			String session = new BigInteger(130, new SecureRandom())
 					.toString(32);
@@ -72,7 +75,9 @@ public class Login extends HttpServlet {
 			s.setInt(2, desig);
 			s.setInt(3, id);
 			s.execute();
-			response.addCookie(new Cookie("session", session));
+			Cookie c = new Cookie("session", session);
+			c.setMaxAge(60*60);
+			response.addCookie(c);
 			String next = request.getParameter("redirect");
 			next = next == null ? "/test.jsp" : next;
 			if (!next.startsWith("/"))

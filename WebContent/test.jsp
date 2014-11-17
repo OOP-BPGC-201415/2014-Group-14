@@ -16,6 +16,7 @@
 		for (Cookie c : cookies) {
 			if (c.getName().equals("session")) {
 				Session s = SessionHelper.getSession(c.getValue());
+				if (s == null) continue;
 				if (s.designation == 0) {
 					user = new Student(s.id).getName();
 				}
