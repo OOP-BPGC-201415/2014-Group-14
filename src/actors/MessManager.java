@@ -1,7 +1,6 @@
 package actors;
 
-import backend.*;
-import java.sql.*;
+import backend.Menu;
 
 public class MessManager
 {

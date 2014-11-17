@@ -1,7 +1,5 @@
 package actors;
 
-import backend.*;
-import java.sql.*;
 
 public class Worker
 {
