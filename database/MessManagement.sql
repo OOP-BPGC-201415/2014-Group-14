@@ -38,11 +38,10 @@ CREATE TABLE IF NOT EXISTS `AlreadyEaten` (
 --
 
 CREATE TABLE IF NOT EXISTS `Complaint` (
-  `Complaint_Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `User_Designation` text NOT NULL,
   `User_Id` text NOT NULL,
-  `Complaint_Subject` text NOT NULL,
-  `Complaint_Body` text NOT NULL,
+  `Complaint_Text` text NOT NULL,
   `Complaint_Status` int(11) NOT NULL,
   PRIMARY KEY (`Complaint_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -57,7 +56,6 @@ CREATE TABLE IF NOT EXISTS `HygieneReport` (
   `SR` int(11) NOT NULL AUTO_INCREMENT,
   `Month` text NOT NULL,
   `Report` text NOT NULL,
-  `Designation` text NOT NULL,
   PRIMARY KEY (`SR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -69,9 +67,9 @@ CREATE TABLE IF NOT EXISTS `HygieneReport` (
 
 CREATE TABLE IF NOT EXISTS `Inventory` (
   `SR` int(11) NOT NULL AUTO_INCREMENT,
-  `Item_Name` text NOT NULL,
-  `Item_Price` int(11) NOT NULL,
-  `Item_Quantity` int(11) NOT NULL,
+  `Item_` text NOT NULL,
+  `Price` int(11) NOT NULL,
+  `Quantity` int(11) NOT NULL,
   PRIMARY KEY (`SR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -83,9 +81,9 @@ CREATE TABLE IF NOT EXISTS `Inventory` (
 
 CREATE TABLE IF NOT EXISTS `Login` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `User_Id` text NOT NULL,
-  `User_Designation` text NOT NULL,
-  `Password` text NOT NULL,
+  `Hash` text NOT NULL,
+  `User_Id` int NOT NULL,
+  `User_Designation` int NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -112,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `Menu` (
 CREATE TABLE IF NOT EXISTS `NonStudentList` (
   `SR` int(11) NOT NULL AUTO_INCREMENT,
   `Name` text NOT NULL,
-  `Id_No` text NOT NULL,
+  `Id` int NOT NULL,
   `Designation` text NOT NULL,
   `Phone_Number` text NOT NULL,
   PRIMARY KEY (`SR`)
@@ -126,10 +124,9 @@ CREATE TABLE IF NOT EXISTS `NonStudentList` (
 
 CREATE TABLE IF NOT EXISTS `Problem` (
   `Problem_Id` int(11) NOT NULL AUTO_INCREMENT,
-  `User_Designation` text NOT NULL,
-  `User_Id` text NOT NULL,
-  `Problem_Subject` text NOT NULL,
-  `Problem_Body` text NOT NULL,
+  `User_Designation` int NOT NULL,
+  `User_Id` int NOT NULL,
+  `Problem_Text` text NOT NULL,
   `Problem_Status` int(11) NOT NULL,
   PRIMARY KEY (`Problem_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -142,11 +139,9 @@ CREATE TABLE IF NOT EXISTS `Problem` (
 
 CREATE TABLE IF NOT EXISTS `StudentLeave` (
   `Leave_Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Student_Id` text NOT NULL,
-  `Departure_Date` date NOT NULL,
-  `Departure_Time` time NOT NULL,
-  `Arrival_Date` date NOT NULL,
-  `Arrival_Time` time NOT NULL,
+  `Student_Id` int NOT NULL,
+  `Departure` datetime NOT NULL,
+  `Arrival` datetime NOT NULL,
   PRIMARY KEY (`Leave_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -159,10 +154,8 @@ CREATE TABLE IF NOT EXISTS `StudentLeave` (
 CREATE TABLE IF NOT EXISTS `StudentList` (
   `SR` int(11) NOT NULL AUTO_INCREMENT,
   `Name` text NOT NULL,
-  `Id_No` text NOT NULL,
-  `Hostel` text NOT NULL,
-  `Current_Mess_Option` int(11) NOT NULL,
-  `Next_Mess_Option` int(11) NOT NULL,
+  `Id` text NOT NULL,
+  `Mess` int(11) NOT NULL,
   PRIMARY KEY (`SR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -173,12 +166,26 @@ CREATE TABLE IF NOT EXISTS `StudentList` (
 --
 
 CREATE TABLE IF NOT EXISTS `WorkerLeave` (
-  `Leave_Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Worker_Id` text NOT NULL,
-  `Departure_Date` date NOT NULL,
-  `Arrival_Date` date NOT NULL,
-  `Leave_Status` int(11) NOT NULL,
-  PRIMARY KEY (`Leave_Id`)
+`Leave_Id` int(11) NOT NULL AUTO_INCREMENT,
+`Worker_Id` int NOT NULL,
+`Departure_Date` date NOT NULL,
+`Arrival_Date` date NOT NULL,
+`Leave_Status` int(11) NOT NULL,
+PRIMARY KEY (`Leave_Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Sessions`
+--
+
+CREATE TABLE IF NOT EXISTS `Sessions` (
+`Session_Id` int(11) NOT NULL AUTO_INCREMENT,
+`hash` text NOT NULL,
+`designation` int NOT NULL,
+`id` int NOT NULL,
+PRIMARY KEY (`Session_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
