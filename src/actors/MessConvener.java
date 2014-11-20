@@ -34,12 +34,8 @@ public class MessConvener extends Student {
 		//return c.viewComplaints();
 	}
 
-	public void setMenu(String day, String time, String menuData) {
-		/*
-		 * Take some string values from the user Convert the list into a JSON
-		 * array and store it in the database Table to insert into "Menu"
-		 */
-		Menu.setMenu(day, time, menuData);
+	public void setMenu(Menu.Day day, Menu.Meal meal, String menuData) {
+		Menu.getMenu().setMenuFor(day, meal, menuData);
 
 	}
 

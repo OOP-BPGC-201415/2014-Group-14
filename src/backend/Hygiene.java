@@ -4,66 +4,35 @@ import actors.*;
 import java.sql.*;
 import java.util.Calendar;
 
-
-public class Hygiene 
-{
-	public void addMonthlyCheck (String report)
-	{
+public class Hygiene {
+	public void addMonthlyReport(String report) {
 		/*
-		* Interact with the table "Hygiene Report"
-		*/
-		
-		try 
-		{
-		    
-		    Connection conn = DatabaseManager.dbConn;
-		    PreparedStatement stmt;
-		    String sql;
-		    
-		    sql = "INSERT INTO HygieneReport (Month,Report,Designation)"
-		    +"VALUES (?,?,?)";		    ;
-		    stmt = conn.prepareStatement(sql);
+		 * Interact with the table "Hygiene Report"
+		 */
+		try {
+			Connection conn = DatabaseManager.getConnection();
+			PreparedStatement stmt = conn
+					.prepareStatement("INSERT INTO HygieneReport (Month, Year, Report)"
+							+ "VALUES (?, ?, ?)");
 
-		   	
-		    
-		    Calendar cal = Calendar.getInstance(); // This is to add the month field 
-		    int month = cal.get(cal.MONTH) +1; // Month in Integer Format
+			// Bind The Values Into The parameters
+			stmt.setInt(1, Calendar.getInstance().get(Calendar.MONTH));
+			stmt.setInt(2, Calendar.getInstance().get(Calendar.YEAR));
+			stmt.setString(3, report);
+			stmt.execute();
 
-		    // Bind The Values Into The parameters
-		    stmt.setString (1,cal.toString());
-		    stmt.setString (2,report);
-		    stmt.setString (3,SessionWrapper.activeSession.userDesignation);
-		  
-
-		    // Executing the query and collecting it in a ResultSet.
-		    ResultSet rs = stmt.executeQuery(sql);
-		   
-		    // Cleaning Up
-		    rs.close();
-		    stmt.close();
-		    conn.close();
-
-		    
-		    
-
+			// Cleaning Up
+			stmt.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		catch (Exception e) 
-		{
-		    e.printStackTrace();
-		}
-		finally
-		{
-			
-
-		}
-
 	}
 
-	public void registerComplaint ()
-	{
+	public void getReportFor() {
 		/*
-		* This will call the Complaint Class
-		* GUI invocation is req. here which in turns calls the Complaint Class
-		*/
+		 * This will call the Complaint Class GUI invocation is req. here which
+		 * in turns calls the Complaint Class
+		 */
 	}
 }

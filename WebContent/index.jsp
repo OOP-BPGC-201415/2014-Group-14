@@ -15,7 +15,9 @@ String user = null;
 Cookie cookies[] = request.getCookies();
 for (Cookie c : cookies) {
     if (c.getName().equals("session")) {
-        user = new Student(SessionHelper.getSession(c.getValue()).id).getName();
+    	Session s = SessionHelper.getSession(c.getValue());
+    	if (s == null) continue;
+        user = new Student(s.id).getName();
         break;
     }
 }
@@ -27,7 +29,7 @@ Please log in:
 <form action="Login" method="post">
 <input type="hidden" name="redirect" value="test.jsp"/>
 Name: <input type="text" name="user"/>
-Password: <input type="password" name="password"/>
+Password: <input type="password" name="pass"/>
 <input type="submit"/>
 </form>
 </body>

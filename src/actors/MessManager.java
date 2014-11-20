@@ -43,13 +43,13 @@ public class MessManager
 		*/
 	
 	}
-	public void setMenu (String day,String time,String menuData)
+	public void setMenu (Menu.Day day, Menu.Meal meal, String menuData)
 	{
 		/*
 		* Add Code To Implement This
 		* This will use the Menu class
 		*/
-		Menu.setMenu (day,time,menuData);
+		Menu.getMenu().setMenuFor(day, meal, menuData);
 	}
 	public void setFoodRate ()
 	{

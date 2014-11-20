@@ -1,62 +1,62 @@
 package backend;
 
-import actors.*;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
-
-public class SwipeIdCard 
-{
+public class SwipeIdCard {
 	/*
-	* Object of this class has to be made when the "Mess Manager" clicks some shit in the GUI
-	*/
-	public String onSwipeIdCard (String idNumber)
-	{
-		String returnMessage;
-		if (checkIfEaten(idNumber) == true)
-		{
-			returnMessage = "Student Has Already Consumed Meal...!! ";
-		}
-		else if (checkIfOnLeave(idNumber) == true)
-		{
-			returnMessage = "You are on leave...Come Eat Tomorrow...!! ";
-		}
-		else if (checkMessOption (idNumber) == false )
-		{
-			returnMessage = "You are not from this mess...!! ";
-		}
-		else
-		{
-			returnMessage = "Best Of Luck For Eating in this mess...!!";
-		}
-
-		return returnMessage;
+	 * Object of this class has to be made when the "Mess Manager" clicks some
+	 * shit in the GUI
+	 */
+	public static boolean validateId(String id) {
+		return !alreadyEaten(id) && checkMessOption(id) && !isOnLeave(id);
 	}
 
-	private boolean checkIfEaten(String idNumber)
-	{
-		boolean result=true;
-		/*
-		* check table - "Not Decided Yet...!"
-		*/
-		return result;
+	public static boolean alreadyEaten(String id) {
+		try {
+			Connection c = DatabaseManager.getConnection();
+			PreparedStatement s = c
+					.prepareStatement("SELECT * FROM AlreadyEaten WHERE id=?");
+			s.setString(1, id);
+			s.execute();
+			return s.getResultSet().first();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return true;
+		}
 	}
 
-	private boolean checkMessOption (String idNumber)
-	{
-		boolean result=true;
-		/*
-		* Check the table - "Students List"
-		*/
-		return result;
+	public static boolean checkMessOption(String id) {
+		try {
+			Connection c = DatabaseManager.getConnection();
+			PreparedStatement s = c
+					.prepareStatement("SELECT * FROM StudentList WHERE id=?");
+			s.setString(1, id);
+			s.execute();
+			return s.getResultSet().first();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return true;
+		}
 	}
 
-	private boolean checkIfOnLeave (String idNumber)
-	{
-		boolean result=true;
-		/*
-		* Check the table - "Leave"
-		*/
-		return result;
+	public static boolean isOnLeave(String id) {
+		try {
+			Connection c = DatabaseManager.getConnection();
+			PreparedStatement s = c
+					.prepareStatement("SELECT * FROM StudentLeave WHERE id=?");
+			s.setString(1, id);
+			s.execute();
+			ResultSet rs = s.getResultSet();
+			if (!rs.first())
+				return false;
+			long time = System.currentTimeMillis();
+			return time < rs.getDate("Departure").getTime()
+					|| time > rs.getDate("Arrival").getTime();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
-
 }

@@ -4,14 +4,7 @@ public abstract class Person {
 	public static final int STUDENT = 0;
 	public static final int STAFF = 1;
 	
-	private int designation;
-	private int id;
+	public abstract int getDesignation();
 	
-	public int getDesignation() {
-		return designation;
-	}
-	
-	public int getId() {
-		return id;
-	}
+	public abstract int getId();
 }

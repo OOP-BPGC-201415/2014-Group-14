@@ -27,8 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `AlreadyEaten` (
-  `Id_Number` text NOT NULL,
-  `Eaten` int(11) NOT NULL
+  `Id` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -38,12 +37,12 @@ CREATE TABLE IF NOT EXISTS `AlreadyEaten` (
 --
 
 CREATE TABLE IF NOT EXISTS `Complaint` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `User_Designation` text NOT NULL,
-  `User_Id` text NOT NULL,
-  `Complaint_Text` text NOT NULL,
-  `Complaint_Status` int(11) NOT NULL,
-  PRIMARY KEY (`Complaint_Id`)
+  `SR` int(11) NOT NULL AUTO_INCREMENT,
+  `Designation` text NOT NULL,
+  `Id` text NOT NULL,
+  `Text` text NOT NULL,
+  `Status` int(11) NOT NULL,
+  PRIMARY KEY (`SR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -52,9 +51,10 @@ CREATE TABLE IF NOT EXISTS `Complaint` (
 -- Table structure for table `HygieneReport`
 --
 
-CREATE TABLE IF NOT EXISTS `HygieneReport` (
+CREATE TABLE IF NOT EXISTS `HygieneReports` (
   `SR` int(11) NOT NULL AUTO_INCREMENT,
-  `Month` text NOT NULL,
+  `Date` int NOT NULL,
+  `Year` int NOT NULL,
   `Report` text NOT NULL,
   PRIMARY KEY (`SR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `HygieneReport` (
 
 CREATE TABLE IF NOT EXISTS `Inventory` (
   `SR` int(11) NOT NULL AUTO_INCREMENT,
-  `Item_` text NOT NULL,
+  `Item` text NOT NULL,
   `Price` int(11) NOT NULL,
   `Quantity` int(11) NOT NULL,
   PRIMARY KEY (`SR`)
@@ -80,11 +80,11 @@ CREATE TABLE IF NOT EXISTS `Inventory` (
 --
 
 CREATE TABLE IF NOT EXISTS `Login` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Hash` text NOT NULL,
-  `User_Id` int NOT NULL,
-  `User_Designation` int NOT NULL,
-  PRIMARY KEY (`ID`)
+  `SR` int(11) NOT NULL AUTO_INCREMENT,
+  `Hash` varchar(32) UNIQUE NOT NULL,
+  `Id` int NOT NULL,
+  `Designation` int NOT NULL,
+  PRIMARY KEY (`SR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -94,12 +94,21 @@ CREATE TABLE IF NOT EXISTS `Login` (
 --
 
 CREATE TABLE IF NOT EXISTS `Menu` (
-  `Day` text NOT NULL,
+  `Day` int(11) UNIQUE NOT NULL,
   `Breakfast` text NOT NULL,
   `Lunch` text NOT NULL,
   `Snacks` text NOT NULL,
   `Dinner` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+insert into menu (day, Breakfast, Lunch, Snacks, Dinner) values (0, "", "", "", "");
+insert into menu (day, Breakfast, Lunch, Snacks, Dinner) values (1, "", "", "", "");
+insert into menu (day, Breakfast, Lunch, Snacks, Dinner) values (2, "", "", "", "");
+insert into menu (day, Breakfast, Lunch, Snacks, Dinner) values (3, "", "", "", "");
+insert into menu (day, Breakfast, Lunch, Snacks, Dinner) values (4, "", "", "", "");
+insert into menu (day, Breakfast, Lunch, Snacks, Dinner) values (5, "", "", "", "");
+insert into menu (day, Breakfast, Lunch, Snacks, Dinner) values (6, "", "", "", "");
+
 
 -- --------------------------------------------------------
 
@@ -110,9 +119,8 @@ CREATE TABLE IF NOT EXISTS `Menu` (
 CREATE TABLE IF NOT EXISTS `NonStudentList` (
   `SR` int(11) NOT NULL AUTO_INCREMENT,
   `Name` text NOT NULL,
-  `Id` int NOT NULL,
   `Designation` text NOT NULL,
-  `Phone_Number` text NOT NULL,
+  `Phone` text NOT NULL,
   PRIMARY KEY (`SR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -123,12 +131,12 @@ CREATE TABLE IF NOT EXISTS `NonStudentList` (
 --
 
 CREATE TABLE IF NOT EXISTS `Problem` (
-  `Problem_Id` int(11) NOT NULL AUTO_INCREMENT,
-  `User_Designation` int NOT NULL,
-  `User_Id` int NOT NULL,
-  `Problem_Text` text NOT NULL,
-  `Problem_Status` int(11) NOT NULL,
-  PRIMARY KEY (`Problem_Id`)
+  `SR` int(11) NOT NULL AUTO_INCREMENT,
+  `Designation` int NOT NULL,
+  `Id` int NOT NULL,
+  `Text` text NOT NULL,
+  `Status` int(11) NOT NULL,
+  PRIMARY KEY (`SR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -138,11 +146,11 @@ CREATE TABLE IF NOT EXISTS `Problem` (
 --
 
 CREATE TABLE IF NOT EXISTS `StudentLeave` (
-  `Leave_Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Student_Id` int NOT NULL,
+  `SR` int(11) NOT NULL AUTO_INCREMENT,
+  `Id` int(11) UNIQUE NOT NULL,
   `Departure` datetime NOT NULL,
   `Arrival` datetime NOT NULL,
-  PRIMARY KEY (`Leave_Id`)
+  PRIMARY KEY (`SR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -154,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `StudentLeave` (
 CREATE TABLE IF NOT EXISTS `StudentList` (
   `SR` int(11) NOT NULL AUTO_INCREMENT,
   `Name` text NOT NULL,
-  `Id` text NOT NULL,
+  `Id` varchar(12) UNIQUE NOT NULL,
   `Mess` int(11) NOT NULL,
   PRIMARY KEY (`SR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -166,12 +174,12 @@ CREATE TABLE IF NOT EXISTS `StudentList` (
 --
 
 CREATE TABLE IF NOT EXISTS `WorkerLeave` (
-`Leave_Id` int(11) NOT NULL AUTO_INCREMENT,
-`Worker_Id` int NOT NULL,
-`Departure_Date` date NOT NULL,
-`Arrival_Date` date NOT NULL,
-`Leave_Status` int(11) NOT NULL,
-PRIMARY KEY (`Leave_Id`)
+`SR` int(11) NOT NULL AUTO_INCREMENT,
+`Id` int NOT NULL,
+`Departure` date NOT NULL,
+`Arrival` date NOT NULL,
+`Status` int(11) NOT NULL,
+PRIMARY KEY (`SR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -181,11 +189,11 @@ PRIMARY KEY (`Leave_Id`)
 --
 
 CREATE TABLE IF NOT EXISTS `Sessions` (
-`Session_Id` int(11) NOT NULL AUTO_INCREMENT,
-`hash` text NOT NULL,
+`SR` int(11) NOT NULL AUTO_INCREMENT,
+`hash` varchar(32) UNIQUE NOT NULL,
 `designation` int NOT NULL,
 `id` int NOT NULL,
-PRIMARY KEY (`Session_Id`)
+PRIMARY KEY (`SR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -2,6 +2,8 @@ package web;
 
 import java.security.MessageDigest;
 
+import actors.Student;
+
 public class HashGenerator {
 	private static final String SALT = "salts are good, mkay?";
 
@@ -23,15 +25,15 @@ public class HashGenerator {
 
 	public static void main(String args[]) {
 		String[][] creds = new String[][] {
-				{"nihanth", "abc"},
-				{"avidipto", "def"},
-				{"vipul", "ghi"},
-				{"bhargav", "jkl"},
-				{"rohit", "mno"},
-				{"ayush", "pqr"}
+				{"Nihanth Subramanya", "2012A3PS151G", "abc"},
+				{"Avidipto Chakraborty", "2012B3A7506G", "def"},
+				{"Vipul Singh", "2012B3A7511G", "ghi"},
+				{"Bhargav Srinivasa", "2013A7PS053G", "jkl"},
+				{"Rohith Ramakrishnan", "2013A7PS124G", "mno"},
+				{"Ayush Pandey", "2012B3A7714G", "pqr"}
 		};
 		for (String[] cred : creds) {
-			System.out.println(cred[0] + " " + cred[1] + ": " + getHash(cred[0], cred[1]));
+			Student.createStudent(cred[0], cred[1], cred[2], 0);
 		}
 	}
 }

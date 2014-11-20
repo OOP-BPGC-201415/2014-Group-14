@@ -31,6 +31,22 @@ public class Student extends Person {
 		c.close();
 	}
 
+	public Student(String id) throws SQLException {
+		Connection c = DatabaseManager.getConnection();
+		PreparedStatement s = c
+				.prepareStatement("SELECT * FROM StudentList WHERE Id=?;");
+		s.setString(1, id);
+		s.execute();
+		ResultSet rs = s.getResultSet();
+		rs.first();
+		this.studentName = rs.getString("Name");
+		this.studentId = id;
+		this.messOption = rs.getInt("Mess");
+		this.dbId = rs.getInt("SR");
+		s.close();
+		c.close();
+	}
+
 	private Student(String name, String id, int mess, int dbId) {
 		this.studentName = name;
 		this.studentId = id;
@@ -85,7 +101,7 @@ public class Student extends Person {
 			ResultSet rs = s.getGeneratedKeys();
 			rs.first();
 			int dbId = rs.getInt(1);
-			s = c.prepareStatement("INSERT INTO Login (Hash, User_Id, User_Designation) VALUES(?, ?, ?);");
+			s = c.prepareStatement("INSERT INTO Login (Hash, Id, Designation) VALUES(?, ?, ?);");
 			s.setString(1, HashGenerator.getHash(id.toLowerCase(), pass));
 			s.setInt(2, dbId);
 			s.setInt(3, 0);
@@ -95,6 +111,10 @@ public class Student extends Person {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static void deleteStudent(String id) {
+		
 	}
 
 	public void fillComplaint(String complaintSubject, String complaintBody) {
