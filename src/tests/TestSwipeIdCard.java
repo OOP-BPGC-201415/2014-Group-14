@@ -1,13 +1,10 @@
 package tests;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.Date;
 import java.util.ArrayList;
+import java.util.Date;
 
-import messmanagement.MessName;
-import messmanagement.Student;
-import messmanagement.SwipeIdCard;
+import actors.Student;
+import backend.SwipeIdCard;
 
 public class TestSwipeIdCard {
 	private Student s1, s2, s3;

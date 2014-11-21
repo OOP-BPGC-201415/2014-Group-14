@@ -1,9 +1,7 @@
 package tests;
 
-import messmanagement.*;
-
-import static org.junit.Assert.assertEquals;
-import org.junit.Test;
+import actors.MessManager;
+import backend.DatabaseManager;
 
 public class TestMessManager {
 	private MessManager m;
