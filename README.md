@@ -51,7 +51,7 @@ Contribution of Team Members
 | Topic         | Number in Stage-2 | Code          | Number added after Stage-2 |
 | ------------- | ----------------- | --------------| ---------------------------|
 | Use cases	| 13	            | Incomplete    | Removed 1                  |
-| Classes       | 15                | Incomplete    | 			 	 |
+| Classes       | 15                | Incomplete    | 5			 	 |
 | Packages      | 3	            | Incomplete    | 1	                	 |
 | Sequence Diag | 15	            | Complete      |	                 	 |
 | Unit Tests    | 2	            | Complete      |		               	 |                                           
