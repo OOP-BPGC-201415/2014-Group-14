@@ -1,0 +1,11 @@
+a) Positives of your group
+
+--> The biggest positive of the group would be the talent-pool- everyone could contribute to everything, and everyone could also specialize at something. This helped save a lot of time, as dividing responsibilities was a breeze, and when it came to getting inputs from everyone in the group about a particular part of the project, the input was always valuable. Getting people up to speed was never a problem! Working on GitHub, it's essential people know their way around every part of the project and accordingly contribute. And of course, the willingness of people to go outside their comfort zone and contribute meaningfully to their (and others) work-space meant that getting the project complete was easier than expected.
+
+b) Negatives of your group
+
+--> With most people in different branches and years, other courses (and projects and other responsibilities) meant that everyone being free at the same time was a rare event, and physical events weren't as often as they should have been. Most communication was done virtually and sometimes ideas were lost in translation. 
+
+c) What would you do differently next time?
+
+--> Arrange more meetings in person, where responsibilities could be better divided and we could squeeze the best out of everyone. Most work was done 2-4 days before the deadline so some problems could not be ironed out, and some ideas could not be brought to fruition; working should have started right after the problem statement was figured out. With regard to the final software delivered, we are fairly satisfied with the performance. 
