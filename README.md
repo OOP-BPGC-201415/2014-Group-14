@@ -4,23 +4,23 @@ Oriented Programming" (CS F213).
 
 Contribution of team members.
 -------------------------------------------------------------------------------------------------------------
-Name	       Student ID     |Roles	             Role-based Contribution (%)    Overall Contribution (%)
+Name	       Student ID       Roles	             Role-based Cont. (%)    Overall Cont. (%)
 -------------------------------------------------------------------------------------------------------------
-Vipul Kumar    2012B3A7511G	Code Development     16.66                          16.66
+Vipul Kumar    2012B3A7511G	Code Development     16.66                   16.66
 Ramjee Kumar      		Testing		     16.66	
 Singh	      			CRC Cards	     16.66	
 	      			UML		     16.66	
 	     			Project Requirements 16.66	
 	      			Use Cases	     16.66	
 				
-Ayush Pandey	2012B4A7714G	Code Development     16.66  			     16.66
+Ayush Pandey	2012B4A7714G	Code Development     16.66  	 	     16.66
 				Testing		     16.66	
 				CRC Cards      	     16.66	
 				UML	             16.66	
 				Project Requirements 16.66	
 				Use Cases	     16.66	
 				
-Bhargav 	2013A7PS053G	Code Development     16.66  			     16.66
+Bhargav 	2013A7PS053G	Code Development     16.66  		      16.66
 Srinivasa			Testing		     16.66	
 Desikan				CRC Cards      	     16.66	
 				UML	             16.66	
