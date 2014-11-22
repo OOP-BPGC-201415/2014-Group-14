@@ -53,7 +53,7 @@ Contribution of Team Members
 | Use cases	| 13	            | Incomplete    | Removed 1                  |
 | Classes       | 15                | Incomplete    | 5			 	 |
 | Packages      | 3	            | Incomplete    | 1	                	 |
-| Sequence Diag | 15	            | Complete      |	                 	 |
+| Sequence Diag | 4	            | Complete      |	                 	 |
 | Unit Tests    | 2	            | Complete      |		               	 |                                           
 
 
