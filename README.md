@@ -37,7 +37,7 @@ Contribution of Team Members
 |       	|	        | UML  		 | 16.66                |
 |       	|	        | Proj Req    	 | 16.66                |
 |  		|	        | Use Cases    	 | 16.66                |
-| Avidipto	| 2012B2A7506G  | Code Dev	 | 16.66                | 16.66
+| Avidipto	| 2012B3A7506G  | Code Dev	 | 16.66                | 16.66
 |	   	|	        | Testing    	 | 16.66                |
 |  		|               | CRC Cards    	 | 16.66	        |
 |       	|	        | UML  		 | 16.66                |
