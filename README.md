@@ -4,7 +4,7 @@ Oriented Programming" (CS F213).
 
 Contribution of team members.
 -------------------------------------------------------------------------------------------------------------
-Name	      Student ID	Roles	             Role-based Contribution (%)    Overall Contribution (%)
+Name	       Student ID	Roles	             Role-based Contribution (%)    Overall Contribution (%)
 -------------------------------------------------------------------------------------------------------------
 Vipul Kumar    2012B3A7511G	Code Development     16.66                          16.66
 Ramjee Kumar      		Testing		     16.66	
