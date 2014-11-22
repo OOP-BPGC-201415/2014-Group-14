@@ -11,7 +11,7 @@ Contribution of team members.
 |  		|               | CRC Cards    	 | 16.66	        |
 |       	|	        | UML  		 | 16.66                |
 |       	|	        | Proj Req    	 | 16.66                |
-|  		|	        | Use Cases    	 | 16.66                |
+|  		|	        | Use Cases    	 | 16.66                |                                                    
 | Ayush Pandey	| 2012B4A7714G  | Code Dev	 | 16.66                | 16.66
 |	   	|	        | Testing    	 | 16.66                |
 |  		|               | CRC Cards    	 | 16.66	        |
@@ -42,67 +42,17 @@ Contribution of team members.
 |       	|	        | UML  		 | 16.66                |
 |       	|	        | Proj Req    	 | 16.66                |
 |  		|	        | Use Cases    	 | 16.66                |
--------------------------------------------------------------------------------------------------------------
 
-Name	       Student ID       Roles	             Role-based Cont. (%)    Overall Cont. (%)
--------------------------------------------------------------------------------------------------------------
-Vipul Kumar    2012B3A7511G	Code Development     16.66                   16.66
-Ramjee Kumar      		Testing		     16.66	
-Singh	      			CRC Cards	     16.66	
-	      			UML		     16.66	
-	     			Project Requirements 16.66	
-	      			Use Cases	     16.66	
-				
-Ayush Pandey	2012B4A7714G	Code Development     16.66  	 	     16.66
-				Testing		     16.66	
-				CRC Cards      	     16.66	
-				UML	             16.66	
-				Project Requirements 16.66	
-				Use Cases	     16.66	
-				
-Bhargav 	2013A7PS053G	Code Development     16.66  		      16.66
-Srinivasa			Testing		     16.66	
-Desikan				CRC Cards      	     16.66	
-				UML	             16.66	
-				Project Requirements 16.66	
-				Use Cases	     16.66	
-				
-Rohith R	2013A7PS124G	Code Development     16.66  		      16.66
-				Testing		     16.66	
-				CRC Cards      	     16.66	
-				UML	             16.66	
-				Project Requirements 16.66	
-				Use Cases	     16.66	
-				
-Nihant 		2012A3PS151G	Code Development     16.66  		      16.66
-Subramanya			Testing		     16.66	
-				CRC Cards      	     16.66	
-				UML	             16.66	
-				Project Requirements 16.66	
-				Use Cases	     16.66		
-				
-				
 
-				
-Avidipto	2012B3A7PS506G	Code Development     16.66  		      16.66
-Chakraborty			Testing		     16.66	
-				CRC Cards      	     16.66	
-				UML	             16.66	
-				Project Requirements 16.66	
-				Use Cases	     16.66	
-				
----------------------------------------------------------------------------------------------------------
 
------------------------------------------------------------------------------------------------------
-Topic		Number in Stage-2		Code		Number added
------------------------------------------------------------------------------------------------------
-Use Cases	13				Incomplete	Removed 1
-Classes		15				Incomplete	
-Packages	3				Incomplete	1
-Sequence Diag	15				Complete	
-Unit tests	2				Complete	
+| Topic         | Number in Stage-2 | Code          | Number added after Stage-2 |
+| ------------- | ----------------- | --------------| ---------------------------|
+| Use cases	| 13	            | Incomplete    | Removed 1                  |
+| Classes       | 15                | Incomplete    | 			 	 |
+| Packages      | 3	            | Incomplete    | 1	                	 |
+| Sequence Diag | 15	            | Complete      |	                 	 |
+| Unit Tests    | 2	            | Complete      |		               	 |                                           
 
------------------------------------------------------------------------------------------------------
 
 All UML diagrams are in uml/.
 
