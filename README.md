@@ -3,7 +3,7 @@ in mind the principles we have learned from our course "Object
 Oriented Programming" (CS F213).
 
 Contribution of Team Members
-:============================:
+============================
 
 | Name          | ID            | Roles          | Role-based Cont. (%) | Overall Cont. (%) 
 | ------------- | ------------- | -------------- | -------------------- |------------------
