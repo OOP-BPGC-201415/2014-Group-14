@@ -3,107 +3,66 @@ package backend;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import actors.Person;
+import java.util.ArrayList;
 
 public class Complaint {
-	private String subject;
-	private String body;
-	private Person who;
-	
-	public Complaint(String subject, String body, Person who) {
-		this.subject = subject;
-		this.body = body;
-		this.who = who;
+	private String from;
+	private String text;
+
+	public Complaint(String from, String text) {
+		this.from = from;
+		this.text = text;
 	}
-	
-	public static void addComplaint(String complaintSubject, String complaintBody) {
+
+	public String getFrom() {
+		return from;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public static boolean addComplaint(String from, String text) {
 		/*
-		 * Add methods to interact with and take the complaint as input
-		 * Will add the complaint to the - "complaint" table. Assume the
-		 * super-global object of the current session is available
+		 * Add methods to interact with and take the complaint as input Will add
+		 * the complaint to the - "complaint" table. Assume the super-global
+		 * object of the current session is available
 		 */
 
 		// To catch any Funny exceptions...!!
 		try {
-
-			Connection conn = DatabaseManager.dbConn;
-			PreparedStatement stmt;
-			String sql;
-
-			sql = "INSERT INTO Complaint (User_Desigmation,User_Id,Complaint_Subject,Complaint_Body,Complaint_Status)"
-					+ "VALUES (?,?,?,?,?)";
-			stmt = conn.prepareStatement(sql);
-
-			// Bind The Values Into The parameters
-
-			stmt.setString(1, SessionWrapper.activeSession.userDesignation);
-			stmt.setString(2, SessionWrapper.activeSession.userId);
-			stmt.setString(3, complaintSubject);
-			stmt.setString(4, complaintBody);
-			stmt.setInt(5, 0);
-
-			// Executing the query and collecting it in a ResultSet.
-
-			ResultSet rs = stmt.executeQuery(sql);
-
-			// Cleaning Up
-
-			rs.close();
-			stmt.close();
-			conn.close();
-
+			Connection c = DatabaseManager.getConnection();
+			PreparedStatement p = c
+					.prepareStatement("INSERT INTO Complaint (`From`, Text, Status) VALUES(?, ?, ?)");
+			p.setString(1, from);
+			p.setString(2, text);
+			p.setInt(3, 0);
+			p.execute();
+			p.close();
+			c.close();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-
+			return false;
 		}
 
 	}
 
-	public static ResultSet viewComplaints() {
-		/*
-		 * Will view the complaint to the - "complaint" table Display it
-		 * according to the gui Return type will will be hash type Or even
-		 * better ResultSet only retrive complaints that are not viewed
-		 */
-
-		ResultSet rs = null; // The return Variable
-
-		// To catch any Funny exceptions...!!
+	public static ArrayList<Complaint> getComplaints() {
 		try {
-
-			Connection conn = DatabaseManager.dbConn;
-			PreparedStatement stmt;
-			String sql;
-
-			sql = "SELECT * FROM Complaint";
-			stmt = conn.prepareStatement(sql);
-
-			// Executing the query and collecting it in a ResultSet.
-			rs = stmt.executeQuery(sql);
-
-			// Cleaning Up
-			stmt.close();
-			conn.close();
-
+			Connection c = DatabaseManager.getConnection();
+			PreparedStatement p = c.prepareStatement("SELECT * FROM Complaint");
+			p.execute();
+			ResultSet rs = p.getResultSet();
+			rs.beforeFirst();
+			ArrayList<Complaint> ret = new ArrayList<>();
+			while (rs.next()) {
+				ret.add(new Complaint(rs.getString("From"), rs
+						.getString("Text")));
+			}
+			return ret;
 		} catch (Exception e) {
-			e.printStackTrace();
+			return null;
 		}
-		return rs;
-
-	}
-
-	public void notifyOthers() {
-		/*
-		 * Notify the mess-manager You have to add Worker Leave Database or the
-		 * worker database will have a column approved or not.
-		 */
-	}
-
-	public void imposeFine() {
-		/*
-		 * Just Impose It...!!
-		 */
 	}
 }

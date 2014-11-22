@@ -45,12 +45,13 @@ public class Login extends HttpServlet {
 		try {
 			Person p = AuthHelper.validate(request.getParameter("user"),
 					request.getParameter("pass"));
-			Session session = SessionHelper.newSession(p.getId(), p.getDesignation());
+			Session session = SessionHelper.newSession(p.getId(),
+					p.getDesignation());
 			Cookie c = new Cookie("session", session.hash);
 			c.setMaxAge(60 * 60);
 			response.addCookie(c);
 			String next = request.getParameter("redirect");
-			next = next == null ? "test.jsp" : next;
+			next = next == null ? "index.jsp" : next;
 			response.sendRedirect(next);
 		} catch (Exception e) {
 			e.printStackTrace();

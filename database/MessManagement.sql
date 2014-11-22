@@ -38,8 +38,7 @@ CREATE TABLE IF NOT EXISTS `AlreadyEaten` (
 
 CREATE TABLE IF NOT EXISTS `Complaint` (
   `SR` int(11) NOT NULL AUTO_INCREMENT,
-  `Designation` text NOT NULL,
-  `Id` text NOT NULL,
+  `From` text NOT NULL,
   `Text` text NOT NULL,
   `Status` int(11) NOT NULL,
   PRIMARY KEY (`SR`)
@@ -147,9 +146,9 @@ CREATE TABLE IF NOT EXISTS `Problem` (
 
 CREATE TABLE IF NOT EXISTS `StudentLeave` (
   `SR` int(11) NOT NULL AUTO_INCREMENT,
-  `Id` int(11) UNIQUE NOT NULL,
-  `Departure` datetime NOT NULL,
-  `Arrival` datetime NOT NULL,
+  `Id` varchar(12) UNIQUE NOT NULL,
+  `Departure` BIGINT NOT NULL,
+  `Arrival` BIGINT NOT NULL,
   PRIMARY KEY (`SR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

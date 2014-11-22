@@ -5,7 +5,7 @@ import java.sql.*;
 import java.util.Calendar;
 
 public class Hygiene {
-	public void addMonthlyReport(String report) {
+	public static void addMonthlyReport(String report) {
 		/*
 		 * Interact with the table "Hygiene Report"
 		 */

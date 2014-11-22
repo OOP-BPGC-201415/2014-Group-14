@@ -30,6 +30,14 @@ public class Logout extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		for (Cookie c : request.getCookies()) {
+			if (c.getName().equals("session")) {
+				c.setMaxAge(0);
+				response.addCookie(c);
+				SessionHelper.deleteSession(c.getValue());
+			}
+		}
+		response.sendRedirect("log-in/index.html");
 	}
 
 	/**
@@ -44,7 +52,7 @@ public class Logout extends HttpServlet {
 				SessionHelper.deleteSession(c.getValue());
 			}
 		}
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("log-in/index.html");
 	}
 
 }

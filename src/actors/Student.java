@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 
 import web.HashGenerator;
 import backend.DatabaseManager;
@@ -15,7 +16,7 @@ public class Student extends Person {
 	private int messOption;
 	private int dbId;
 
-	public Student(int dbId) throws SQLException {
+	public Student(int dbId) throws Exception {
 		this.dbId = dbId;
 		Connection c = DatabaseManager.getConnection();
 		PreparedStatement s = c
@@ -23,7 +24,8 @@ public class Student extends Person {
 		s.setInt(1, dbId);
 		s.execute();
 		ResultSet rs = s.getResultSet();
-		rs.first();
+		if (!rs.first())
+			throw new Exception("Student doesn't exist!");
 		this.studentName = rs.getString("Name");
 		this.studentId = rs.getString("Id");
 		this.messOption = rs.getInt("Mess");
@@ -31,14 +33,15 @@ public class Student extends Person {
 		c.close();
 	}
 
-	public Student(String id) throws SQLException {
+	public Student(String id) throws Exception {
 		Connection c = DatabaseManager.getConnection();
 		PreparedStatement s = c
 				.prepareStatement("SELECT * FROM StudentList WHERE Id=?;");
 		s.setString(1, id);
 		s.execute();
 		ResultSet rs = s.getResultSet();
-		rs.first();
+		if (!rs.first())
+			throw new Exception("Student doesn't exist!");
 		this.studentName = rs.getString("Name");
 		this.studentId = id;
 		this.messOption = rs.getInt("Mess");
@@ -72,10 +75,21 @@ public class Student extends Person {
 		 */
 	}
 
-	public void applyForLeave() {
-		/*
-		 * Add Code To Implement This
-		 */
+	public void applyForLeave(long from, long to) {
+		try {
+			Connection c = DatabaseManager.getConnection();
+			PreparedStatement s = c
+					.prepareStatement("DELETE FROM StudentLeave WHERE Id=?;");
+			s.setString(1, getStudentId());
+			s.execute();
+			s = c.prepareStatement("INSERT INTO StudentLeave (Id, Departure, Arrival) VALUES(?, ?, ?);");
+			s.setString(1, getStudentId());
+			s.setLong(2, from);
+			s.setLong(3, to);
+			s.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public String getName() {
@@ -112,9 +126,25 @@ public class Student extends Person {
 		}
 		return null;
 	}
-	
+
 	public static void deleteStudent(String id) {
-		
+
+		try {
+			Student student = new Student(id);
+			Connection c = DatabaseManager.getConnection();
+			PreparedStatement s = c
+					.prepareStatement("DELETE FROM StudentList WHERE Id=?;");
+			s.setString(1, student.getStudentId());
+			s.execute();
+			s = c.prepareStatement("DELETE FROM Login WHERE Designation=? AND Id=?;");
+			s.setInt(1, 0);
+			s.setInt(2, student.getId());
+			s.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			// Student doesn't exist.
+		}
 	}
 
 	public void fillComplaint(String complaintSubject, String complaintBody) {

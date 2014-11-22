@@ -1,18 +1,24 @@
 package actors;
 
-import backend.*;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
 
-public class MessConvener extends Student {
-	public MessConvener() throws SQLException {
-		super(1);
-		/*
-		 * Assuming that there is only one Mess Manager Implement Code To get
-		 * the data from the database and fill the field up. Table where the
-		 * data can be found - "Non Students List" Identify the "post" field as
-		 * "Mess Manager"
-		 */
-	}
+import web.HashGenerator;
+import backend.Complaint;
+import backend.DatabaseManager;
+import backend.Hygiene;
+import backend.Menu;
+
+public class MessConvener extends Person {
+
+	public int getDesignation() {
+		return 1;
+	};
+
+	public int getId() {
+		return 2;
+	};
 
 	public void submitHygieneReport(String report) {
 		/*
@@ -20,23 +26,48 @@ public class MessConvener extends Student {
 		 * parameter obj will be the Object of the String Insert the data into
 		 * table - "Hygiene Report"
 		 */
-		Hygiene h = new Hygiene();
-		h.addMonthlyCheck(report);
-
+		Hygiene.addMonthlyReport(report);
 	}
 
-	public void viewComplaints() {
+	public static ArrayList<Complaint> viewComplaints() {
 		/*
 		 * Get the values from the the "Complaints" table and display Actual
 		 * return type is a hash array
 		 */
-		//Complaint c = new Complaint();
-		//return c.viewComplaints();
+		return Complaint.getComplaints();
 	}
 
 	public void setMenu(Menu.Day day, Menu.Meal meal, String menuData) {
 		Menu.getMenu().setMenuFor(day, meal, menuData);
 
+	}
+
+	public static void setConvener(String name, String pass, String phone) {
+		try {
+			Connection c = DatabaseManager.getConnection();
+			PreparedStatement s = c
+					.prepareStatement("DELETE FROM Login WHERE Designation=? AND SR=?;");
+			int dbId = 2;
+			s.setInt(1, 1);
+			s.setInt(2, dbId);
+			s.execute();
+			s = c.prepareStatement("UPDATE NonStudentList SET Name=?, Phone=? WHERE SR=?;");
+			s.setString(1, name);
+			s.setString(2, phone);
+			s.setInt(3, dbId);
+			s.execute();
+			s = c.prepareStatement("INSERT INTO Login (Hash, Id, Designation) VALUES(?, ?, ?);");
+			s.setString(1, HashGenerator.getHash("convener", pass));
+			s.setInt(2, dbId);
+			s.setInt(3, 1);
+			s.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String args[]) {
+		setConvener("Clark Kent", "yaypassword", "912234234234");
 	}
 
 }

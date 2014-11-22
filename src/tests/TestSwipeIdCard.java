@@ -1,45 +1,49 @@
 package tests;
 
-import java.util.ArrayList;
-import java.util.Date;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
+import org.junit.Test;
 
 import actors.Student;
 import backend.SwipeIdCard;
 
 public class TestSwipeIdCard {
 	private Student s1, s2, s3;
-	private SwipeIdCard sic;
-	
-	public TestSwipeIdCard() {
-		s1 = new Student("tom", "1");
-		s2 = new Student("dick", "2");
-		s3 = new Student("harry", "3");
-		sic = new SwipeIdCard(MessName.A);
-	}
-	
+
+	@Test
 	public void doTest() {
-		s1.setMessOption(MessName.A);
-		s2.setMessOption(MessName.A);
-		s3.setMessOption(MessName.C);
-		
-		assertEquals(false, sic.checkMessOption(s1.getId()));
-		assertEquals(false, sic.checkMessOption(s2.getId()));
-		assertEquals(true, sic.checkMessOption(s3.getId()));
-		
-		assertEquals(false, sic.onIdCardSwiped(s3.getId()));
-		
-		assertEquals(false, sic.checkEaten(s1.getId()));
-		assertEquals(false, sic.checkEaten(s2.getId()));
-		assertEquals(false, sic.checkEaten(s3.getId()));
-		
-		assertEquals(true, sic.onIdCardSwiped(s1.getId()));
-		assertEquals(true, sic.checkEaten(s1.getId()));
-		assertEquals(false, sic.onIdCardSwiped(s1.getId()));
-		
-		ArrayList<Date> leaveDates = new ArrayList<Date>();
-		leaveDates.add(new Date());
-		s2.applyForLeave(leaveDates);
-		assertEquals(true, sic.checkOnLeave(s2.getId()));
-		assertEquals(false, sic.onIdCardSwiped(s2.getId()));
+		Student.deleteStudent("TestID1");
+		Student.deleteStudent("TestID2");
+		Student.deleteStudent("TestID3");
+		s1 = Student.createStudent("Test1", "TestID1", "asdlfad", 0);
+		s2 = Student.createStudent("Test2", "TestID2", "asdlfad", 0);
+		s3 = Student.createStudent("Test3", "TestID3", "asdlfad", 0);
+		SwipeIdCard.newMeal();
+
+		assertEquals(true, SwipeIdCard.checkMessOption(s1.getStudentId()));
+		assertEquals(true, SwipeIdCard.checkMessOption(s2.getStudentId()));
+		assertEquals(true, SwipeIdCard.checkMessOption(s3.getStudentId()));
+		assertEquals(false, SwipeIdCard.checkMessOption("Not in the db!"));
+
+		assertEquals(null, SwipeIdCard.validateId(s3.getStudentId()));
+
+		assertEquals(false, SwipeIdCard.alreadyEaten(s1.getStudentId()));
+		assertEquals(false, SwipeIdCard.alreadyEaten(s2.getStudentId()));
+		assertEquals(true, SwipeIdCard.alreadyEaten(s3.getStudentId()));
+
+		assertEquals(null, SwipeIdCard.validateId(s1.getStudentId()));
+		assertEquals(true, SwipeIdCard.alreadyEaten(s1.getStudentId()));
+		assertNotEquals(null, SwipeIdCard.validateId(s1.getStudentId()));
+
+		long now = System.currentTimeMillis();
+		long tomorrow = now + 24 * 60 * 60 * 1000;
+		s2.applyForLeave(now, tomorrow);
+		assertEquals(true, SwipeIdCard.isOnLeave(s2.getStudentId()));
+		assertNotEquals(null, SwipeIdCard.validateId(s2.getStudentId()));
+
+		Student.deleteStudent(s1.getStudentId());
+		Student.deleteStudent(s2.getStudentId());
+		Student.deleteStudent(s3.getStudentId());
 	}
 }
