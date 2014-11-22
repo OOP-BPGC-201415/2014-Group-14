@@ -2,7 +2,8 @@ This project is a Mess Management System written in Java keeping
 in mind the principles we have learned from our course "Object
 Oriented Programming" (CS F213).
 
-Contribution of team members.
+Contribution of Team Members
+:============================:
 
 | Name          | ID            | Roles          | Role-based Cont. (%) | Overall Cont. (%) 
 | ------------- | ------------- | -------------- | -------------------- |------------------
@@ -42,6 +43,8 @@ Contribution of team members.
 |       	|	        | UML  		 | 16.66                |
 |       	|	        | Proj Req    	 | 16.66                |
 |  		|	        | Use Cases    	 | 16.66                |
+
+
 
 
 
