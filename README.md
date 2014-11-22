@@ -31,7 +31,7 @@ Contribution of Team Members
 |       	|	        | UML  		 | 16.66                |
 |       	|	        | Proj Req    	 | 16.66                |
 |  		|	        | Use Cases    	 | 16.66                |
-| Nihant	| 2012A3PS151G  | Code Dev	 | 16.66                | 16.66
+| Nihanth	| 2012A3PS151G  | Code Dev	 | 16.66                | 16.66
 |	   	|	        | Testing    	 | 16.66                |
 |  		|               | CRC Cards    	 | 16.66	        |
 |       	|	        | UML  		 | 16.66                |
@@ -63,13 +63,11 @@ All code is in src/ (JUnit Tests are in src/tests).
 
 The SQL Queries of the databases created can be found in database/MessManagement.sql file
 
-To compile all source files in one go run the exec.sh in src/ directory
-
-The are 3 packages :
-
-	- actors 
-	- backend
-	- swd
+Eclipse Deployment Instructions:
+1. Install Tomcat 8.x and add to Eclipse servers
+2. Install MySQL and source the MessManagement.sql file.
+2. Import the project root from Git (File->Import->Projects From Git)
+3. Start Tomcat, open index.jsp in your browser.
 
 Project Special Requirments :
 
