@@ -6,13 +6,44 @@ Contribution of team members.
 
 | Name          | ID            | Roles          | Role-based Cont. (%) | Overall Cont. (%) 
 | ------------- | ------------- | -------------- | -------------------- |------------------
-|	        | 2012B3A7511G  |	  	 |                      |
-|	   	|	        |     		 |                      |
-|  		|               |     		 | 	                |
-|       	|	        |   		 |                      |
-|       	|	        |     		 |                      |
-|  		|	        |     		 |                      |
+| Vipul Singh	| 2012B3A7511G  | Code Dev	 | 16.66                | 16.66
+|	   	|	        | Testing    	 | 16.66                |
+|  		|               | CRC Cards    	 | 16.66	        |
+|       	|	        | UML  		 | 16.66                |
+|       	|	        | Proj Req    	 | 16.66                |
+|  		|	        | Use Cases    	 | 16.66                |
+| Ayush Pandey	| 2012B4A7714G  | Code Dev	 | 16.66                | 16.66
+|	   	|	        | Testing    	 | 16.66                |
+|  		|               | CRC Cards    	 | 16.66	        |
+|       	|	        | UML  		 | 16.66                |
+|       	|	        | Proj Req    	 | 16.66                |
+|  		|	        | Use Cases    	 | 16.66                |
+| Bhargav S	| 2013A7PS053G  | Code Dev	 | 16.66                | 16.66
+|	   	|	        | Testing    	 | 16.66                |
+|  		|               | CRC Cards    	 | 16.66	        |
+|       	|	        | UML  		 | 16.66                |
+|       	|	        | Proj Req    	 | 16.66                |
+|  		|	        | Use Cases    	 | 16.66                |
+| Rohith R	| 2013A7PS124G  | Code Dev	 | 16.66                | 16.66
+|	   	|	        | Testing    	 | 16.66                |
+|  		|               | CRC Cards    	 | 16.66	        |
+|       	|	        | UML  		 | 16.66                |
+|       	|	        | Proj Req    	 | 16.66                |
+|  		|	        | Use Cases    	 | 16.66                |
+| Nihant	| 2012A3PS151G  | Code Dev	 | 16.66                | 16.66
+|	   	|	        | Testing    	 | 16.66                |
+|  		|               | CRC Cards    	 | 16.66	        |
+|       	|	        | UML  		 | 16.66                |
+|       	|	        | Proj Req    	 | 16.66                |
+|  		|	        | Use Cases    	 | 16.66                |
+| Avidipto	| 2012B2A7506G  | Code Dev	 | 16.66                | 16.66
+|	   	|	        | Testing    	 | 16.66                |
+|  		|               | CRC Cards    	 | 16.66	        |
+|       	|	        | UML  		 | 16.66                |
+|       	|	        | Proj Req    	 | 16.66                |
+|  		|	        | Use Cases    	 | 16.66                |
 -------------------------------------------------------------------------------------------------------------
+
 Name	       Student ID       Roles	             Role-based Cont. (%)    Overall Cont. (%)
 -------------------------------------------------------------------------------------------------------------
 Vipul Kumar    2012B3A7511G	Code Development     16.66                   16.66
