@@ -217,12 +217,12 @@
                     </div>
                     <div class="accordion-group">
                         <div class="accordion-heading accordionize">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionArea" href="#threeArea">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionArea" href="#fourArea">
                           Thursday
                             <span class="font-icon-arrow-simple-down"></span>
                         </a>
                         </div>
-                        <div id="threeArea" class="accordion-body collapse">
+                        <div id="fourArea" class="accordion-body collapse">
                             <div class="accordion-inner">
                                 <span style="font-weight: bold;">Breakfast:</span><br/>
                                 <%= m.getMenuFor(Menu.Day.Thursday, Menu.Meal.Breakfast) %><br/>

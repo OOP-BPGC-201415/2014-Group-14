@@ -27,9 +27,9 @@
 		else if (s.designation != 1)
 			return;
 		else if (s.id == 1)
-			response.sendRedirect("mess-manager/mess-manager.html");
+			response.sendRedirect("mess-manager/mess-manager.jsp");
 		else if (s.id == 2)
-			response.sendRedirect("mess-convener/mess-convener.html");
+			response.sendRedirect("mess-convener/mess-convener.jsp");
 		else {
 			response.sendRedirect("log-in/index.html");
 		}

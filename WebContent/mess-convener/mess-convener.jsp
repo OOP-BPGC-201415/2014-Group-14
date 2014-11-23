@@ -40,7 +40,7 @@
 			Session s = SessionHelper.getSession(c.getValue());
 			if (s == null)
 				continue;
-			if (s.designation == 1 && s.id == 1) {
+			if (s.designation == 1 && s.id == 2) {
 				user = s;
 				break;
 			}
@@ -70,7 +70,9 @@
 			<a href="#me" class="icon fa-home active"><span>Home</span></a> <a
 				href="#work" class="icon fa-folder"><span>Complaints</span></a> <a
 				href="#contact" class="icon fa-envelope"><span>Set Menu</span></a> <a
-				href="hygiene/hygiene.html" class="icon fa-pencil"><span>Hygiene</span></a>
+				href="../hygiene/hygiene.html" class="icon fa-pencil"><span>Hygiene</span></a>
+
+			<a href="../Logout" class="icon fa-sign-out"><span>Logout</span></a>
 		</nav>
 
 		<!-- Main -->

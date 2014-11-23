@@ -1,3 +1,4 @@
+<%@page import="actors.*"%>
 <%@page import="web.SessionHelper"%>
 <%@page import="web.Session"%>
 <%@page import="actors.Student"%>
@@ -20,6 +21,12 @@
 				if (s.designation == 0) {
 					user = new Student(s.id).getName();
 				}
+                else if (s.id == 1){
+                    user = (new MessManager()).name;
+                }
+                else if (s.id == 2){
+                    user = "Jane Doe";
+                }
 				break;
 			}
 		}
